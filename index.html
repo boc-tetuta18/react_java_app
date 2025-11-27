@@ -2,39 +2,52 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>サービス機能（モーターテスト）</title>
+  <title>サービス機能（デモ統合）</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- ReactカメラUIのビルドCSS -->
+  <link rel="stylesheet" href="./camera/build/assets/index-SUS-ouNW.css">
 </head>
 <body>
+  <main>
+    <!-- サービスメニュー画面 -->
+    <section id="service-screen" class="screen active">
+      <h1>サービスメニュー</h1>
+      <div id="service-menu">
+        <button onclick="showMotorUI()">モーターテスト</button>
+        <button onclick="showCameraUI()">カメラテスト</button>
+      </div>
+    </section>
 
-  <h1>サービスメニュー</h1>
+    <!-- モーター操作画面 -->
+    <section id="motor-screen" class="screen">
+      <div class="section-header">
+        <button class="back-button" onclick="showServiceMenu()">サービスメニューに戻る</button>
+        <h1>モーター操作</h1>
+      </div>
+      <div id="motor-ui" class="panel">
+        <div class="motor-buttons">
+          <button onclick="motorForward()">正転</button>
+          <button onclick="motorBackward()">逆転</button>
+          <button onclick="motorStop()">停止</button>
+        </div>
+        <p id="motor-status">状態：待機中</p>
+      </div>
+    </section>
 
-  <div id="service-menu">
-    <button onclick="showMotorUI()">モーターテスト</button>
-    <button onclick="showCameraUI()">カメラテスト（React予定）</button>
-  </div>
-
-  <hr>
-
-  <!-- モーターテスト画面 -->
-  <div id="motor-ui">
-    <h2>モーター操作</h2>
-
-    <div class="motor-buttons">
-      <button onclick="motorForward()">モータ正転</button>
-      <button onclick="motorBackward()">モータ逆転</button>
-      <button onclick="motorStop()">停止</button>
-    </div>
-
-    <p id="motor-status">状態：待機中</p>
-  </div>
-
-  <!-- カメラUIは後でReactをここに埋め込む -->
-  <div id="camera-ui" style="display:none;">
-    <h2>カメラUI（React予定）</h2>
-    <p>React を組み込む枠を準備しています。</p>
-  </div>
+    <!-- カメラ操作画面 -->
+    <section id="camera-screen" class="screen">
+      <div class="section-header">
+        <button class="back-button" onclick="showServiceMenu()">サービスメニューに戻る</button>
+        <h1>カメラ操作</h1>
+      </div>
+      <div id="camera-ui" class="panel"></div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
+
+  <!-- React のビルド済みJS -->
+  <script type="module" src="./camera/build/assets/index-B2hSyvLS.js"></script>
 </body>
 </html>
