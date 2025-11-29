@@ -80,14 +80,14 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
   };
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 bg-white">
       {/* ヘッダー */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <Button
             onClick={() => onNavigate('menu')}
             variant="outline"
-            className="bg-slate-800 border-slate-700"
+            className="bg-gray-200 hover:bg-gray-300 border-gray-300"
           >
             <Home className="w-4 h-4 mr-2" />
             メインメニュー
@@ -102,14 +102,14 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
               停止
             </Button>
           ) : (
-            <Button onClick={handleStartCapture} className="bg-green-600 hover:bg-green-700">
+            <Button onClick={handleStartCapture} className="bg-green-600 hover:bg-green-700 text-white">
               <Play className="w-4 h-4 mr-2" />
               撮影開始
             </Button>
           )}
           
           <Select value="job_default">
-            <SelectTrigger className="w-48 bg-slate-800 border-slate-700">
+            <SelectTrigger className="w-48 bg-white border-gray-300">
               <SelectValue placeholder="ジョブ選択" />
             </SelectTrigger>
             <SelectContent>
@@ -121,7 +121,7 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
 
           <Button
             onClick={() => onNavigate('result')}
-            className="bg-purple-600 hover:bg-purple-700"
+            className="bg-gray-200 hover:bg-gray-300 text-black border border-gray-300"
           >
             <List className="w-4 h-4 mr-2" />
             結果リストへ
@@ -133,12 +133,12 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
       <div className="grid grid-cols-3 gap-6">
         {/* 左カラム: 画像表示 */}
         <div className="col-span-2">
-          <Card className="p-6 bg-slate-800 border-slate-700">
+          <Card className="p-6 bg-white border-gray-300 shadow">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <span className="text-slate-400">撮影対象: </span>
-                <span>{currentSpecimen.name}</span>
-                <span className="ml-4 text-slate-400">
+                <span className="text-gray-500">撮影対象: </span>
+                <span className="text-black">{currentSpecimen.name}</span>
+                <span className="ml-4 text-gray-500">
                   (Image {currentImageIndex + 1} / {totalImages})
                 </span>
               </div>
@@ -147,7 +147,7 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
                   variant="outline"
                   size="sm"
                   onClick={() => setOverlayEnabled(!overlayEnabled)}
-                  className="bg-slate-700 border-slate-600"
+                  className="bg-gray-200 hover:bg-gray-300 border-gray-300"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   {overlayEnabled ? 'オーバーレイON' : 'オーバーレイOFF'}
@@ -156,7 +156,7 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
             </div>
 
             {/* 画像表示エリア */}
-            <div className="relative bg-slate-950 rounded-lg overflow-hidden aspect-[4/3] mb-4">
+            <div className="relative bg-gray-100 rounded-lg overflow-hidden aspect-[4/3] mb-4">
               <ImageWithFallback
                 src={currentImage.url}
                 alt={`${currentSpecimen.name} - Image ${currentImageIndex + 1}`}
@@ -202,7 +202,7 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
               <Button
                 onClick={handlePrevImage}
                 variant="outline"
-                className="bg-slate-700 border-slate-600"
+                className="bg-gray-200 hover:bg-gray-300 border-gray-300"
                 disabled={isCapturing}
               >
                 <ChevronLeft className="w-4 h-4 mr-2" />
@@ -210,14 +210,14 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
               </Button>
 
               <div className="flex items-center gap-2">
-                <span className="text-slate-400">ID:</span>
-                <span className="font-mono">{currentImage.id}</span>
+                <span className="text-gray-500">ID:</span>
+                <span className="font-mono text-black">{currentImage.id}</span>
               </div>
 
               <Button
                 onClick={handleNextImage}
                 variant="outline"
-                className="bg-slate-700 border-slate-600"
+                className="bg-gray-200 hover:bg-gray-300 border-gray-300"
                 disabled={isCapturing}
               >
                 次の画像
@@ -230,10 +230,10 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
         {/* 右カラム: 結果表示 */}
         <div className="space-y-6">
           {/* 検体切替 */}
-          <Card className="p-4 bg-slate-800 border-slate-700">
-            <label className="block text-slate-400 mb-2">検体切替</label>
+          <Card className="p-4 bg-white border-gray-300 shadow">
+            <label className="block text-gray-500 mb-2">検体切替</label>
             <Select value={currentSpecimenId} onValueChange={handleSpecimenChange}>
-              <SelectTrigger className="bg-slate-700 border-slate-600">
+              <SelectTrigger className="bg-white border-gray-300">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -247,13 +247,13 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
           </Card>
 
           {/* 検査結果 */}
-          <Card className="p-6 bg-slate-800 border-slate-700">
-            <h3 className="mb-4 pb-2 border-b border-slate-700">検査結果</h3>
+          <Card className="p-6 bg-white border-gray-300 shadow">
+            <h3 className="mb-4 pb-2 border-b border-gray-300">検査結果</h3>
             
             {currentResult ? (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">判定:</span>
+                  <span className="text-gray-500">判定:</span>
                   <Badge className={`${getJudgeColor(currentResult.judge)} text-white px-4 py-1`}>
                     {currentResult.judge}
                   </Badge>
@@ -261,55 +261,55 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="text-slate-400">X座標</div>
-                    <div className="font-mono">{currentResult.x.toFixed(1)}</div>
+                    <div className="text-gray-500">X座標</div>
+                    <div className="font-mono text-black">{currentResult.x.toFixed(1)}</div>
                   </div>
                   <div>
-                    <div className="text-slate-400">Y座標</div>
-                    <div className="font-mono">{currentResult.y.toFixed(1)}</div>
+                    <div className="text-gray-500">Y座標</div>
+                    <div className="font-mono text-black">{currentResult.y.toFixed(1)}</div>
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-400">スコア</div>
+                  <div className="text-gray-500">スコア</div>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-slate-700 rounded-full h-2">
+                    <div className="flex-1 bg-gray-200 rounded-full h-2">
                       <div
                         className="bg-cyan-500 h-2 rounded-full transition-all"
                         style={{ width: `${currentResult.score}%` }}
                       ></div>
                     </div>
-                    <span className="font-mono">{currentResult.score.toFixed(1)}%</span>
+                    <span className="font-mono text-black">{currentResult.score.toFixed(1)}%</span>
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-400">QRコード</div>
-                  <div className="font-mono bg-slate-900 p-2 rounded mt-1">
+                  <div className="text-gray-500">QRコード</div>
+                  <div className="font-mono bg-gray-100 p-2 rounded mt-1 text-black">
                     {currentResult.qrCode}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-700">
-                  <div className="text-slate-400">画像ID</div>
-                  <div className="font-mono">{currentResult.imageId}</div>
+                <div className="pt-4 border-t border-gray-300">
+                  <div className="text-gray-500">画像ID</div>
+                  <div className="font-mono text-black">{currentResult.imageId}</div>
                 </div>
               </div>
             ) : (
-              <div className="text-center text-slate-500 py-8">
+              <div className="text-center text-gray-500 py-8">
                 結果データがありません
               </div>
             )}
           </Card>
 
           {/* クイックアクション */}
-          <Card className="p-4 bg-slate-800 border-slate-700">
+          <Card className="p-4 bg-white border-gray-300 shadow">
             <div className="space-y-2">
-              <Button variant="outline" className="w-full bg-slate-700 border-slate-600">
+              <Button variant="outline" className="w-full bg-gray-200 hover:bg-gray-300 border-gray-300">
                 <ZoomIn className="w-4 h-4 mr-2" />
                 画像を拡大
               </Button>
-              <Button variant="outline" className="w-full bg-slate-700 border-slate-600">
+              <Button variant="outline" className="w-full bg-gray-200 hover:bg-gray-300 border-gray-300">
                 <Save className="w-4 h-4 mr-2" />
                 結果を保存
               </Button>

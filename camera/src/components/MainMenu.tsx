@@ -44,10 +44,10 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
     <div className="flex flex-col items-center justify-center min-h-screen p-8">
       <div className="mb-12">
         <h1 className="text-center mb-2">産業用カメラ検査システム</h1>
-        <p className="text-slate-400 text-center">Camera Inspection System v1.0</p>
+        <p className="text-gray-500 text-center">Camera Inspection System v1.0</p>
       </div>
 
-      <Card className="p-8 bg-slate-800 border-slate-700">
+      <Card className="p-8 bg-white border-gray-300 shadow-lg">
         <div className="grid grid-cols-3 gap-6">
           {menuItems.map((item) => {
             const Icon = item.icon;
@@ -55,7 +55,7 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
               <Button
                 key={item.id}
                 onClick={() => onNavigate(item.id as any)}
-                className={`h-32 flex flex-col items-center justify-center gap-3 ${item.color} transition-all`}
+                className="h-32 flex flex-col items-center justify-center gap-3 bg-gray-200 hover:bg-gray-300 text-black transition-all border border-gray-300"
               >
                 <Icon className="w-12 h-12" />
                 <span>{item.label}</span>
@@ -65,7 +65,7 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
         </div>
       </Card>
 
-      <div className="mt-8 text-slate-500">
+      <div className="mt-8 text-gray-500">
         <p>画面サイズ: 1920 × 1080</p>
       </div>
     </div>

@@ -1,13 +1,22 @@
-import { useState } from 'react';
-import { MainMenu } from './components/MainMenu';
-import { CameraControl } from './components/CameraControl';
-import { ResultList } from './components/ResultList';
+import { useState } from "react";
+import { MainMenu } from "./components/MainMenu";
+import { CameraControl } from "./components/CameraControl";
+import { ResultList } from "./components/ResultList";
 
-type Screen = 'menu' | 'camera' | 'result' | 'job' | 'service' | 'settings';
+type Screen =
+  | "menu"
+  | "camera"
+  | "result"
+  | "job"
+  | "service"
+  | "settings";
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<Screen>('menu');
-  const [selectedSpecimenId, setSelectedSpecimenId] = useState<string | null>(null);
+  const [currentScreen, setCurrentScreen] =
+    useState<Screen>("menu");
+  const [selectedSpecimenId, setSelectedSpecimenId] = useState<
+    string | null
+  >(null);
 
   const navigateTo = (screen: Screen, specimenId?: string) => {
     setCurrentScreen(screen);
@@ -17,40 +26,53 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100">
-      {currentScreen === 'menu' && <MainMenu onNavigate={navigateTo} />}
-      {currentScreen === 'camera' && (
-        <CameraControl 
+    <div className="min-h-screen bg-white text-black">
+      {currentScreen === "menu" && (
+        <MainMenu onNavigate={navigateTo} />
+      )}
+      {currentScreen === "camera" && (
+        <CameraControl
           onNavigate={navigateTo}
           initialSpecimenId={selectedSpecimenId}
         />
       )}
-      {currentScreen === 'result' && <ResultList onNavigate={navigateTo} />}
-      {currentScreen === 'job' && (
+      {currentScreen === "result" && (
+        <ResultList onNavigate={navigateTo} />
+      )}
+      {currentScreen === "job" && (
         <div className="flex items-center justify-center h-screen">
           <div className="text-center">
             <h1 className="mb-4">ジョブセレクト</h1>
-            <button onClick={() => navigateTo('menu')} className="px-4 py-2 bg-blue-600 rounded">
+            <button
+              onClick={() => navigateTo("menu")}
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded"
+            >
               メニューに戻る
             </button>
           </div>
         </div>
       )}
-      {currentScreen === 'service' && (
+      {currentScreen === "service" && (
         <div className="flex items-center justify-center h-screen">
           <div className="text-center">
             <h1 className="mb-4">サービスモード</h1>
-            <button onClick={() => navigateTo('menu')} className="px-4 py-2 bg-blue-600 rounded">
+            <button
+              onClick={() => navigateTo("menu")}
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded"
+            >
               メニューに戻る
             </button>
           </div>
         </div>
       )}
-      {currentScreen === 'settings' && (
+      {currentScreen === "settings" && (
         <div className="flex items-center justify-center h-screen">
           <div className="text-center">
             <h1 className="mb-4">設定</h1>
-            <button onClick={() => navigateTo('menu')} className="px-4 py-2 bg-blue-600 rounded">
+            <button
+              onClick={() => navigateTo("menu")}
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded"
+            >
               メニューに戻る
             </button>
           </div>
