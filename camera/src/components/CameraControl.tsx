@@ -92,7 +92,7 @@ export function CameraControl({ onNavigate, initialSpecimenId }: CameraControlPr
             <Home className="w-4 h-4 mr-2" />
             メインメニュー
           </Button>
-          <h1>カメラコントロール</h1>
+          <h1>素晴らしいカメラコントロール</h1>
         </div>
         
         <div className="flex items-center gap-4">

@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <title>サービス機能（デモ統合）</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- ReactカメラUIのビルドCSS -->
-  <link rel="stylesheet" href="./camera/build/assets/index-C8YCj8f_.css">
 </head>
 <body>
   <main>
@@ -35,19 +32,22 @@
       </div>
     </section>
 
-    <!-- カメラ操作画面 -->
+    <!-- カメラ操作画面（React部分） -->
     <section id="camera-screen" class="screen">
       <div class="section-header">
         <button class="back-button" onclick="showServiceMenu()">サービスメニューに戻る</button>
         <h1>カメラ操作</h1>
       </div>
-      <div id="camera-ui" class="panel"></div>
+
+      <!-- ★ポイント：iframeで build/index.html をそのまま読み込む -->
+      <iframe
+        id="camera-frame"
+        src="./camera/build/index.html"
+        style="width:100%; height:85vh; border:none; border-radius:8px;"
+      ></iframe>
     </section>
   </main>
 
   <script src="script.js"></script>
-
-  <!-- React のビルド済みJS -->
-  <script type="module" src="./camera/build/assets/index-fUef5z5t.js"></script>
 </body>
 </html>
